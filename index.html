@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUDIT-DK-2026 — Dhanoush Kessavane</title>
+  <meta name="description" content="Rapport d'audit de sécurité — Cible : Dhanoush Kessavane, étudiant ingénieur Cybersécurité & IA (ECE Paris). Constat critique : aucune alternance détectée à partir de septembre 2026.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗂️</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Bandeau de classification -->
+  <div class="classification-strip">
+    TLP:CLEAR — DIFFUSION AUTORISÉE ET VIVEMENT ENCOURAGÉE AUPRÈS DES RECRUTEURS
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#couverture" class="nav-ref">AUDIT-DK-2026<span class="nav-ref-status">● DISPONIBLE</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#synthese">§1 Synthèse</a>
+        <a href="#constat">§2 Constat</a>
+        <a href="#operations">§3 Opérations</a>
+        <a href="#preuves">§4 Preuves</a>
+        <a href="#surface">§5 Surface</a>
+        <a href="#historique">§6 Formation</a>
+        <a href="#remediation">§7 Remédiation</a>
+        <a href="assets/CV_Dhanoush_Kessavane.pdf" class="nav-annexe" download>ANNEXE A : CV.pdf ↓</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Basculer mode nuit">
+          <span class="toggle-light">MODE NUIT</span>
+          <span class="toggle-dark">MODE JOUR</span>
+        </button>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="report">
+
+    <!-- ===== COUVERTURE ===== -->
+    <section class="cover" id="couverture">
+      <div class="cover-topline">
+        <span>RÉF. AUDIT-DK-2026-ALT</span>
+        <span>VERSION 2.0</span>
+        <span>PARIS, FRANCE</span>
+      </div>
+
+      <p class="cover-kicker">RAPPORT D'AUDIT DE SÉCURITÉ</p>
+      <h1 class="cover-title">CIBLE :<br>DHANOUSH<br>KESSAVANE</h1>
+
+      <div class="cover-stamp-zone">
+        <div class="stamp">
+          <span class="stamp-line1">DISPONIBLE</span>
+          <span class="stamp-line2">ALTERNANCE — SEPT. 2026</span>
+        </div>
+      </div>
+
+      <table class="cover-meta">
+        <tr><th>Cible auditée</th><td>Dhanoush Kessavane — Étudiant ingénieur, spécialisation Cybersécurité &amp; IA (ECE Paris)</td></tr>
+        <tr><th>Périmètre</th><td>DevOps · Cloud · Cybersécurité · IA</td></tr>
+        <tr><th>Localisation</th><td>Paris, France</td></tr>
+        <tr><th>Commanditaire</th><td class="redact-cell">Votre entreprise&nbsp;? <span class="redacted" aria-hidden="true">██████████</span></td></tr>
+        <tr><th>Conclusion</th><td><strong>1 constat critique</strong> relevé — remédiation simple et rapide (voir §7)</td></tr>
+      </table>
+
+      <div class="cover-toc">
+        <p class="toc-title">SOMMAIRE</p>
+        <ol>
+          <li><a href="#synthese"><span>Synthèse exécutive</span><span class="toc-dots"></span><span>§1</span></a></li>
+          <li><a href="#constat"><span>Constat critique DK-001</span><span class="toc-dots"></span><span>§2</span></a></li>
+          <li><a href="#operations"><span>Journal des opérations (expérience)</span><span class="toc-dots"></span><span>§3</span></a></li>
+          <li><a href="#preuves"><span>Pièces à conviction (projets)</span><span class="toc-dots"></span><span>§4</span></a></li>
+          <li><a href="#surface"><span>Surface d'attaque (compétences)</span><span class="toc-dots"></span><span>§5</span></a></li>
+          <li><a href="#historique"><span>Antécédents (formation)</span><span class="toc-dots"></span><span>§6</span></a></li>
+          <li><a href="#remediation"><span>Plan de remédiation (contact)</span><span class="toc-dots"></span><span>§7</span></a></li>
+        </ol>
+      </div>
+
+      <div class="cover-footer">
+        <span class="barcode" aria-hidden="true"></span>
+        <div class="cover-links">
+          <a href="https://github.com/dkessavane" target="_blank" rel="noopener">[GITHUB]</a>
+          <a href="https://www.linkedin.com/in/dhanoush-kessavane/" target="_blank" rel="noopener">[LINKEDIN]</a>
+          <a href="mailto:kessavanedhanoush@gmail.com">[EMAIL]</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== §1 SYNTHÈSE ===== -->
+    <section class="rsection" id="synthese">
+      <header class="rsection-head">
+        <h2>SYNTHÈSE EXÉCUTIVE</h2>
+        <span class="rsection-num">§1</span>
+      </header>
+
+      <div class="two-col">
+        <div>
+          <p>
+            La cible est un <strong>étudiant ingénieur à l'ECE Paris</strong>, en spécialisation
+            <strong>Cybersécurité &amp; Intelligence Artificielle</strong>, issue d'un
+            <strong>BUT Informatique</strong> (IUT Sorbonne Paris Nord, 2023–2026).
+          </p>
+          <p>
+            Elle opère actuellement en tant qu'<strong>alternant Infrastructure Automation &amp; IA
+            chez NTT France</strong> (Paris), où elle développe une application full stack
+            d'automatisation de staging réseau et intègre des agents IA de supervision d'infrastructures.
+          </p>
+          <p>
+            L'audit conclut à un profil <strong>opérationnel sur les périmètres DevOps, Cloud,
+            Cybersécurité et IA</strong>, avec des livrables vérifiables en production (voir §4).
+            Un unique constat critique a été relevé ; il fait l'objet du §2.
+          </p>
+        </div>
+        <aside class="factbox">
+          <p class="factbox-title">FICHE D'IDENTIFICATION</p>
+          <dl>
+            <dt>Statut</dt><dd>Alternant — NTT France (jusqu'à sept. 2026)</dd>
+            <dt>Recherche</dt><dd>Alternance dès sept. 2026</dd>
+            <dt>Domaines</dt><dd>DevOps / Cloud / Cyber / IA</dd>
+            <dt>Base</dt><dd>Paris (75)</dd>
+            <dt>Certif.</dt><dd>MOOC SecNumAcadémie (ANSSI)</dd>
+            <dt>Salaire</dt><dd><span class="redacted">████████</span> (à négocier)</dd>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== §2 CONSTAT CRITIQUE ===== -->
+    <section class="rsection" id="constat">
+      <header class="rsection-head">
+        <h2>CONSTAT CRITIQUE</h2>
+        <span class="rsection-num">§2</span>
+      </header>
+
+      <article class="finding">
+        <div class="finding-head">
+          <span class="finding-id">DK-001</span>
+          <span class="sev sev-crit">SÉVÉRITÉ : CRITIQUE</span>
+          <span class="finding-score">CVSS 9.8 / 10</span>
+        </div>
+        <h3 class="finding-title">Absence de contrat d'alternance à partir de septembre 2026</h3>
+        <table class="finding-table">
+          <tr>
+            <th>Description</th>
+            <td>À compter de septembre 2026, la cible ne dispose d'aucun contrat d'alternance
+                sur les périmètres DevOps, Cloud, Cybersécurité ou IA. La vulnérabilité est
+                <strong>activement exploitable</strong> par toute entreprise disposant d'une équipe technique.</td>
+          </tr>
+          <tr>
+            <th>Impact</th>
+            <td>Pour votre organisation : perte d'un profil formé au développement full stack,
+                à l'automatisation d'infrastructures et aux systèmes IA — déjà rôdé en entreprise
+                (NTT France, FNAC DARTY).</td>
+          </tr>
+          <tr>
+            <th>Exploitabilité</th>
+            <td>TRIVIALE — un e-mail suffit. Aucun outil offensif requis.</td>
+          </tr>
+          <tr>
+            <th>Remédiation</th>
+            <td><strong>Recruter la cible.</strong> Correctif disponible immédiatement, procédure détaillée au §7.</td>
+          </tr>
+        </table>
+        <div class="finding-actions">
+          <a class="btn-ink" href="mailto:kessavanedhanoush@gmail.com?subject=Remédiation%20DK-001%20—%20Alternance%202026">APPLIQUER LE CORRECTIF →</a>
+          <a class="btn-ghost" href="assets/CV_Dhanoush_Kessavane.pdf" download>CONSULTER L'ANNEXE A (CV) ↓</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== §3 OPÉRATIONS ===== -->
+    <section class="rsection" id="operations">
+      <header class="rsection-head">
+        <h2>JOURNAL DES OPÉRATIONS</h2>
+        <span class="rsection-num">§3</span>
+      </header>
+      <p class="rsection-note">// Expérience professionnelle de la cible, par ordre antéchronologique.</p>
+
+      <article class="op">
+        <div class="op-time">
+          <span class="op-dates">2025-12 → 2026-09</span>
+          <span class="op-flag op-flag-live">EN COURS</span>
+        </div>
+        <div class="op-body">
+          <h3>Alternant Infrastructure Automation &amp; IA — <em>NTT France, Paris (75)</em></h3>
+          <ul class="checklist">
+            <li>Développement d'une application <strong>full stack d'automatisation de staging réseau</strong></li>
+            <li>Intégration d'<strong>agents IA</strong> pour la supervision d'infrastructures réseau</li>
+            <li>Contribution à des environnements proches du <strong>DevOps</strong></li>
+            <li>Optimisation et <strong>monitoring</strong> des infrastructures IT</li>
+          </ul>
+          <p class="op-stack">MATÉRIEL SAISI : Python · Automatisation · Agents IA · Réseau · Monitoring</p>
+        </div>
+      </article>
+
+      <article class="op">
+        <div class="op-time">
+          <span class="op-dates">2025-01 → 2025-03</span>
+          <span class="op-flag">CLÔTURÉ</span>
+        </div>
+        <div class="op-body">
+          <h3>Technicien Support &amp; Gestionnaire IT — <em>FNAC DARTY, Ivry-sur-Seine (94)</em></h3>
+          <ul class="checklist">
+            <li>Support utilisateurs (VIP inclus), suivi de tickets et coordination IT</li>
+            <li>Gestion des postes, imprimantes et comptes <strong>Active Directory</strong></li>
+            <li>Déploiement de logiciels via <strong>MECM</strong></li>
+            <li>Création d'une application <strong>PowerApps</strong></li>
+            <li>Inventaire du matériel obsolète (démarche RSE)</li>
+          </ul>
+          <p class="op-stack">MATÉRIEL SAISI : Active Directory · MECM · PowerApps · ITSM</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== §4 PREUVES ===== -->
+    <section class="rsection" id="preuves">
+      <header class="rsection-head">
+        <h2>PIÈCES À CONVICTION</h2>
+        <span class="rsection-num">§4</span>
+      </header>
+      <p class="rsection-note">// Projets versés au dossier. Chaque pièce est vérifiable sur demande — certaines directement en ligne.</p>
+
+      <div class="filter-bar" id="filterBar">
+        <span class="filter-label">TRIER :</span>
+        <button class="filter-btn active" data-filter="all">TOUTES</button>
+        <button class="filter-btn" data-filter="ia">IA / ML</button>
+        <button class="filter-btn" data-filter="web">WEB / FULL-STACK</button>
+        <button class="filter-btn" data-filter="algo">ALGO / POO</button>
+      </div>
+
+      <div class="evidence-grid" id="projectsGrid">
+
+        <article class="evidence" data-cat="ia web">
+          <div class="evidence-head">
+            <span class="evidence-id">PIÈCE #01</span>
+            <span class="evidence-tag">BUT 3 — 2025/26</span>
+          </div>
+          <h3>Voyage Assistant — Chatbot IA &amp; RAG en production</h3>
+          <p>
+            Plateforme full-stack de réservation multi-transport (182 000+ liaisons) dotée d'un
+            assistant IA conversationnel : vérification d'identité, modification réelle de réservation
+            en base, réclamations. RAG avec reranking. <strong>Déployé en ligne</strong> sur Hugging Face Spaces.
+            Rôle de la cible : front-end, design, documentation.
+          </p>
+          <p class="evidence-stack">FastAPI · LangChain · FAISS · RAG · PostgreSQL · Docker · Gemini</p>
+          <div class="evidence-links">
+            <a href="https://optimalako-voyage-assistant.hf.space" target="_blank" rel="noopener">[VOIR LA DÉMO]</a>
+            <a href="https://github.com/optmlako2004/chatbot" target="_blank" rel="noopener">[CODE SOURCE]</a>
+          </div>
+        </article>
+
+        <article class="evidence" data-cat="ia">
+          <div class="evidence-head">
+            <span class="evidence-id">PIÈCE #02</span>
+            <span class="evidence-tag">BUT 3 — 2025/26</span>
+          </div>
+          <h3>FacePredictor — Deep Learning embarqué sur Android</h3>
+          <p>
+            Application mobile prédisant âge, genre et ethnicité à partir d'un visage, en temps réel.
+            Trois stratégies de modélisation comparées (backbone EfficientNetB0), entraînement sur
+            UTKFace (23 708 images), déploiement embarqué via TensorFlow Lite.
+            Rôle de la cible : front-end, design, documentation.
+          </p>
+          <p class="evidence-stack">TensorFlow · TFLite · Kotlin · MediaPipe · Firebase · CameraX</p>
+          <div class="evidence-links">
+            <a href="https://github.com/optmlako2004/face-analysis-deep-learning" target="_blank" rel="noopener">[CODE SOURCE]</a>
+          </div>
+        </article>
+
+        <article class="evidence" data-cat="web">
+          <div class="evidence-head">
+            <span class="evidence-id">PIÈCE #03</span>
+            <span class="evidence-tag">BUT 2 — 2024/25</span>
+          </div>
+          <h3>Plateforme web de jeux — Architecture MVC</h3>
+          <p>
+            Site web développé en PHP selon le pattern MVC (Models / Views / Controllers),
+            adossé à une base de données SQL, avec envoi d'e-mails transactionnels via PHPMailer.
+          </p>
+          <p class="evidence-stack">PHP · MVC · SQL · PHPMailer</p>
+        </article>
+
+        <article class="evidence" data-cat="algo">
+          <div class="evidence-head">
+            <span class="evidence-id">PIÈCE #04</span>
+            <span class="evidence-tag">BUT 1 — 2023/24</span>
+          </div>
+          <h3>Tournée du Père Noël — Optimisation TSP</h3>
+          <p>
+            Résolution du problème du voyageur de commerce en Python : comparaison d'heuristiques
+            (plus proche voisin, optimisations locales), mesure des performances et tests unitaires.
+          </p>
+          <p class="evidence-stack">Python · Algorithmique · NumPy · Tests unitaires</p>
+        </article>
+
+        <article class="evidence" data-cat="algo">
+          <div class="evidence-head">
+            <span class="evidence-id">PIÈCE #05</span>
+            <span class="evidence-tag">BUT 1 — 2023/24</span>
+          </div>
+          <h3>Calculatrice Java — Conception UML &amp; POO</h3>
+          <p>
+            Calculatrice supportant des expressions arithmétiques composées, conçue en UML puis
+            implémentée en Java avec une hiérarchie de classes propre (héritage, polymorphisme).
+          </p>
+          <p class="evidence-stack">Java · UML · POO</p>
+        </article>
+
+        <article class="evidence" data-cat="web">
+          <div class="evidence-head">
+            <span class="evidence-id">PIÈCE #06</span>
+            <span class="evidence-tag">HACKATHON — 2024</span>
+          </div>
+          <h3>Nuit de l'Info 2024</h3>
+          <p>
+            Application web développée en équipe, en une nuit, en réponse à un sujet national
+            dévoilé le soir même — conception, code et intégration sous forte contrainte de temps.
+          </p>
+          <p class="evidence-stack">Travail d'équipe · Web · Sprint</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== §5 SURFACE D'ATTAQUE ===== -->
+    <section class="rsection" id="surface">
+      <header class="rsection-head">
+        <h2>SURFACE D'ATTAQUE</h2>
+        <span class="rsection-num">§5</span>
+      </header>
+      <p class="rsection-note">// Inventaire des capacités techniques détectées lors du scan.</p>
+
+      <div class="inventory">
+        <div class="inv-block">
+          <p class="inv-head">SCAN 1/4 — LANGAGES</p>
+          <ul>
+            <li>Python</li><li>Bash</li><li>SQL</li><li>Java</li><li>PHP</li><li>HTML / CSS / JS</li>
+          </ul>
+        </div>
+        <div class="inv-block">
+          <p class="inv-head">SCAN 2/4 — DEVOPS &amp; INFRA</p>
+          <ul>
+            <li>Git</li><li>Docker</li><li>GitHub Actions</li><li>CI/CD</li><li>PostgreSQL</li><li>Linux</li>
+          </ul>
+        </div>
+        <div class="inv-block">
+          <p class="inv-head">SCAN 3/4 — IA &amp; LLM</p>
+          <ul>
+            <li>RAG</li><li>LangChain</li><li>FAISS</li><li>TensorFlow Lite</li><li>Agents IA</li>
+          </ul>
+        </div>
+        <div class="inv-block">
+          <p class="inv-head">SCAN 4/4 — CYBERSÉCURITÉ</p>
+          <ul>
+            <li>Fondamentaux ANSSI (SecNumAcadémie)</li>
+            <li>Nmap</li><li>Wireshark</li><li>Analyse de trafic</li>
+            <li>Durcissement Linux</li><li>CTF — TryHackMe · Root-Me</li>
+          </ul>
+        </div>
+      </div>
+      <p class="inv-footnote">NOTE DE L'AUDITEUR : ports 22, 80 et 443 ouverts à toute proposition sérieuse.</p>
+    </section>
+
+    <!-- ===== §6 ANTÉCÉDENTS ===== -->
+    <section class="rsection" id="historique">
+      <header class="rsection-head">
+        <h2>ANTÉCÉDENTS — FORMATION</h2>
+        <span class="rsection-num">§6</span>
+      </header>
+
+      <table class="records">
+        <tr>
+          <td class="rec-date">EN COURS</td>
+          <td class="rec-body">
+            <strong>Cursus Ingénieur — Spécialisation Cybersécurité &amp; IA</strong><br>
+            ECE Paris — en alternance
+          </td>
+        </tr>
+        <tr>
+          <td class="rec-date">2023 → 2026</td>
+          <td class="rec-body">
+            <strong>BUT Informatique</strong><br>
+            IUT Sorbonne Paris Nord — Villetaneuse (93)<br>
+            <span class="rec-extra">▸ Hackathon « Nuit de l'Info » 2024&nbsp;&nbsp;▸ MOOC SecNumAcadémie (ANSSI)</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="rec-date">2023</td>
+          <td class="rec-body">
+            <strong>BAC Général — Spé Maths &amp; NSI, option Maths expertes</strong><br>
+            Lycée Simone de Beauvoir — Garges-lès-Gonesse (95)
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- ===== §7 REMÉDIATION ===== -->
+    <section class="rsection rsection-last" id="remediation">
+      <header class="rsection-head">
+        <h2>PLAN DE REMÉDIATION</h2>
+        <span class="rsection-num">§7</span>
+      </header>
+
+      <div class="remediation-box">
+        <p class="remediation-step">ÉTAPE 1/3 — Ouvrir le canal de communication :</p>
+        <a class="btn-ink btn-big" href="mailto:kessavanedhanoush@gmail.com?subject=Remédiation%20DK-001%20—%20Alternance%202026">kessavanedhanoush@gmail.com</a>
+        <p class="remediation-step">ÉTAPE 2/3 — Consulter les éléments annexes :</p>
+        <div class="remediation-links">
+          <a href="assets/CV_Dhanoush_Kessavane.pdf" download>[ANNEXE A — CV.pdf]</a>
+          <a href="https://github.com/dkessavane" target="_blank" rel="noopener">[GITHUB]</a>
+          <a href="https://www.linkedin.com/in/dhanoush-kessavane/" target="_blank" rel="noopener">[LINKEDIN]</a>
+        </div>
+        <p class="remediation-step">ÉTAPE 3/3 — Proposer un entretien. Délai de réponse constaté : &lt; 24 h.</p>
+      </div>
+
+      <div class="signoff">
+        <div>
+          <p class="signoff-label">FAIT À</p>
+          <p>Paris, le <span id="today"></span></p>
+        </div>
+        <div>
+          <p class="signoff-label">L'AUDITEUR (ET SA PROPRE CIBLE)</p>
+          <p class="signature">D. Kessavane</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>FIN DU RAPPORT — AUDIT-DK-2026 · Document conçu et codé à la main par la cible elle-même · Aucun dégradé cyan/violet n'a été utilisé dans ce document · <span id="year"></span></p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
