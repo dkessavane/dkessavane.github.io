@@ -1,8 +1,0 @@
-Dépose ton CV PDF dans ce dossier avec exactement ce nom :
-
-    CV_Dhanoush_Kessavane.pdf
-
-Les boutons "CV" et "Télécharger mon CV" du site pointent vers :
-    assets/CV_Dhanoush_Kessavane.pdf
-
-(Tu peux ensuite supprimer ce fichier texte.)
