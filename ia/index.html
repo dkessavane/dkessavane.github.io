@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DK-1 — Model Card · Dhanoush Kessavane</title>
+  <meta name="description" content="Fiche de modèle DK-1 — Dhanoush Kessavane, étudiant ingénieur Cybersécurité & IA (ECE Paris). Limitation connue : aucun déploiement en alternance prévu après septembre 2026.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="bg-mesh" aria-hidden="true"></div>
+
+  <!-- Bandeau système -->
+  <div class="system-strip">
+    <span class="strip-prompt">system&nbsp;›</span> modèle disponible pour un déploiement en alternance dès septembre 2026 — inférence recruteur illimitée, sans quota
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#apercu" class="nav-ref">
+        <span class="nav-logo" aria-hidden="true"></span>
+        dkessavane<span class="nav-slash">/</span>DK-1
+        <span class="nav-ref-status"><span class="pulse-dot"></span>ONLINE</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#apercu">Aperçu</a>
+        <a href="#limitation">Limitation</a>
+        <a href="#finetuning">Fine-tuning</a>
+        <a href="#evaluations">Évaluations</a>
+        <a href="#capacites">Capacités</a>
+        <a href="#corpus">Corpus</a>
+        <a href="#deploiement">Déploiement</a>
+        <a href="../assets/CV_Dhanoush_Kessavane.pdf" class="nav-annexe" download>weights.pdf ↓</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
+          <span class="toggle-light">◐ dark</span>
+          <span class="toggle-dark">◑ light</span>
+        </button>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- ===== HERO / MODEL CARD ===== -->
+    <section class="hero" id="apercu">
+      <p class="hero-kicker">// model_card — v2026.09</p>
+      <h1 class="hero-title">DK&#8209;1</h1>
+      <p class="hero-sub">
+        Modèle <strong>étudiant-ingénieur multimodal</strong> — spécialisé
+        <span class="grad-text">Cybersécurité &amp; Intelligence Artificielle</span> (ECE Paris),
+        pré-entraîné en BUT Informatique, actuellement en fine-tuning chez NTT France.
+      </p>
+
+      <div class="tag-row" aria-label="Tags du modèle">
+        <span class="tag tag-hot">🔥 alternance-sept-2026</span>
+        <span class="tag">devops</span>
+        <span class="tag">cloud</span>
+        <span class="tag">cybersécurité</span>
+        <span class="tag">ia · rag · agents</span>
+        <span class="tag">full-stack</span>
+        <span class="tag">📍 paris-fr</span>
+      </div>
+
+      <!-- Démo conversationnelle -->
+      <div class="chat-demo" role="img" aria-label="Démonstration : le modèle répond qu'il est disponible en alternance dès septembre 2026">
+        <div class="chat-titlebar">
+          <span class="chat-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="chat-title">playground — inference en direct</span>
+          <span class="chat-temp">temp&nbsp;=&nbsp;0.7</span>
+        </div>
+        <div class="chat-body">
+          <div class="msg msg-user">
+            <span class="msg-role">recruteur</span>
+            <p>Je cherche un alternant DevOps / Cloud / Cyber / IA à partir de septembre 2026. Tu connais quelqu'un&nbsp;?</p>
+          </div>
+          <div class="msg msg-ai">
+            <span class="msg-role">DK-1</span>
+            <p><span id="typedReply"></span><span class="cursor" id="cursor" aria-hidden="true">▍</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fiche technique -->
+      <div class="spec-grid">
+        <div class="spec"><span class="spec-k">architecture</span><span class="spec-v">Humain · full-stack · orienté infra &amp; IA</span></div>
+        <div class="spec"><span class="spec-k">pré-entraînement</span><span class="spec-v">BUT Informatique — IUT Sorbonne Paris Nord</span></div>
+        <div class="spec"><span class="spec-k">fine-tuning</span><span class="spec-v">Alternant Infra Automation &amp; IA — NTT France</span></div>
+        <div class="spec"><span class="spec-k">contexte</span><span class="spec-v">Paris (75) — fenêtre extensible en Île-de-France</span></div>
+        <div class="spec"><span class="spec-k">licence</span><span class="spec-v">Alternance — libre dès sept. 2026</span></div>
+        <div class="spec"><span class="spec-k">alignement</span><span class="spec-v">MOOC SecNumAcadémie (ANSSI) ✓</span></div>
+      </div>
+
+      <div class="hero-links">
+        <a href="https://github.com/dkessavane" target="_blank" rel="noopener">↗ github</a>
+        <a href="https://www.linkedin.com/in/dhanoush-kessavane/" target="_blank" rel="noopener">↗ linkedin</a>
+        <a href="mailto:kessavanedhanoush@gmail.com">↗ email</a>
+        <a href="../index.html" class="link-alt">⇄ version cyber de ce portfolio</a>
+      </div>
+    </section>
+
+    <!-- ===== LIMITATION CONNUE ===== -->
+    <section class="section" id="limitation">
+      <header class="section-head">
+        <p class="section-kicker">// model_card.limitations</p>
+        <h2>Limitation connue</h2>
+      </header>
+
+      <article class="issue">
+        <div class="issue-head">
+          <span class="issue-id">ISSUE&nbsp;#001</span>
+          <span class="issue-sev">severity: critical</span>
+          <span class="issue-status"><span class="pulse-dot pulse-red"></span>open — help&nbsp;wanted</span>
+        </div>
+        <h3 class="issue-title">Le modèle n'est rattaché à aucune entreprise après septembre 2026</h3>
+        <div class="issue-body">
+          <p>
+            <strong>Comportement observé :</strong> à compter de septembre 2026, DK-1 tourne à vide —
+            aucun contrat d'alternance détecté sur les périmètres DevOps, Cloud, Cybersécurité ou IA.
+            Un modèle opérationnel, déjà rôdé en entreprise (NTT France, FNAC DARTY), reste sous-exploité.
+          </p>
+          <p>
+            <strong>Comportement attendu :</strong> le modèle est déployé en production dans votre équipe technique,
+            où il génère du code, de l'automatisation et de la valeur, avec un temps de réponse &lt; 24&nbsp;h.
+          </p>
+          <p>
+            <strong>Correctif :</strong> trivial — un e-mail suffit. Aucun GPU requis. Procédure complète dans la
+            section <a href="#deploiement">Déploiement</a>.
+          </p>
+        </div>
+        <div class="issue-actions">
+          <a class="btn-grad" href="mailto:kessavanedhanoush@gmail.com?subject=Fix%20ISSUE%20%23001%20—%20Alternance%202026">Corriger l'issue →</a>
+          <a class="btn-ghost" href="../assets/CV_Dhanoush_Kessavane.pdf" download>Télécharger les poids (CV.pdf) ↓</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== FINE-TUNING ===== -->
+    <section class="section" id="finetuning">
+      <header class="section-head">
+        <p class="section-kicker">// training_runs — expérience professionnelle</p>
+        <h2>Fine-tuning</h2>
+      </header>
+
+      <article class="run">
+        <div class="run-meta">
+          <span class="run-dates">2025-12 → 2026-09</span>
+          <span class="run-flag run-flag-live"><span class="pulse-dot"></span>run en cours</span>
+        </div>
+        <div class="run-body">
+          <h3>Alternant Infrastructure Automation &amp; IA — <em>NTT France, Paris (75)</em></h3>
+          <ul class="tokens-list">
+            <li>Développement d'une application <strong>full stack d'automatisation de staging réseau</strong></li>
+            <li>Intégration d'<strong>agents IA</strong> pour la supervision d'infrastructures réseau</li>
+            <li>Contribution à des environnements proches du <strong>DevOps</strong></li>
+            <li>Optimisation et <strong>monitoring</strong> des infrastructures IT</li>
+          </ul>
+          <p class="run-stack">dataset&nbsp;: Python · Automatisation · Agents IA · Réseau · Monitoring</p>
+        </div>
+      </article>
+
+      <article class="run">
+        <div class="run-meta">
+          <span class="run-dates">2025-01 → 2025-03</span>
+          <span class="run-flag">checkpoint validé</span>
+        </div>
+        <div class="run-body">
+          <h3>Technicien Support &amp; Gestionnaire IT — <em>FNAC DARTY, Ivry-sur-Seine (94)</em></h3>
+          <ul class="tokens-list">
+            <li>Support utilisateurs (VIP inclus), suivi de tickets et coordination IT</li>
+            <li>Gestion des postes, imprimantes et comptes <strong>Active Directory</strong></li>
+            <li>Déploiement de logiciels via <strong>MECM</strong></li>
+            <li>Création d'une application <strong>PowerApps</strong></li>
+            <li>Inventaire du matériel obsolète (démarche RSE)</li>
+          </ul>
+          <p class="run-stack">dataset&nbsp;: Active Directory · MECM · PowerApps · ITSM</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== ÉVALUATIONS ===== -->
+    <section class="section" id="evaluations">
+      <header class="section-head">
+        <p class="section-kicker">// evals — projets versés au benchmark, vérifiables (certains en ligne)</p>
+        <h2>Évaluations</h2>
+      </header>
+
+      <div class="filter-bar" id="filterBar">
+        <span class="filter-label">filter&nbsp;:</span>
+        <button class="filter-btn active" data-filter="all">all</button>
+        <button class="filter-btn" data-filter="ia">ia / ml</button>
+        <button class="filter-btn" data-filter="web">web / full-stack</button>
+        <button class="filter-btn" data-filter="algo">algo / poo</button>
+      </div>
+
+      <div class="eval-grid" id="projectsGrid">
+
+        <article class="eval" data-cat="ia web">
+          <div class="eval-head">
+            <span class="eval-id">EVAL·01</span>
+            <span class="eval-tag">BUT 3 — 2025/26</span>
+          </div>
+          <h3>Voyage Assistant — Chatbot IA &amp; RAG en production</h3>
+          <p>
+            Plateforme full-stack de réservation multi-transport (182 000+ liaisons) dotée d'un
+            assistant IA conversationnel : vérification d'identité, modification réelle de réservation
+            en base, réclamations. RAG avec reranking. <strong>Déployé en ligne</strong> sur Hugging Face Spaces.
+            Rôle : front-end, design, documentation.
+          </p>
+          <p class="eval-stack">FastAPI · LangChain · FAISS · RAG · PostgreSQL · Docker · Gemini</p>
+          <div class="eval-links">
+            <a href="https://optimalako-voyage-assistant.hf.space" target="_blank" rel="noopener">↗ démo live</a>
+            <a href="https://github.com/optmlako2004/chatbot" target="_blank" rel="noopener">↗ code source</a>
+          </div>
+        </article>
+
+        <article class="eval" data-cat="ia">
+          <div class="eval-head">
+            <span class="eval-id">EVAL·02</span>
+            <span class="eval-tag">BUT 3 — 2025/26</span>
+          </div>
+          <h3>FacePredictor — Deep Learning embarqué sur Android</h3>
+          <p>
+            Application mobile prédisant âge, genre et ethnicité à partir d'un visage, en temps réel.
+            Trois stratégies de modélisation comparées (backbone EfficientNetB0), entraînement sur
+            UTKFace (23 708 images), déploiement embarqué via TensorFlow Lite.
+            Rôle : front-end, design, documentation.
+          </p>
+          <p class="eval-stack">TensorFlow · TFLite · Kotlin · MediaPipe · Firebase · CameraX</p>
+          <div class="eval-links">
+            <a href="https://github.com/optmlako2004/face-analysis-deep-learning" target="_blank" rel="noopener">↗ code source</a>
+          </div>
+        </article>
+
+        <article class="eval" data-cat="web">
+          <div class="eval-head">
+            <span class="eval-id">EVAL·03</span>
+            <span class="eval-tag">BUT 2 — 2024/25</span>
+          </div>
+          <h3>Plateforme web de jeux — Architecture MVC</h3>
+          <p>
+            Site web développé en PHP selon le pattern MVC (Models / Views / Controllers),
+            adossé à une base de données SQL, avec envoi d'e-mails transactionnels via PHPMailer.
+          </p>
+          <p class="eval-stack">PHP · MVC · SQL · PHPMailer</p>
+        </article>
+
+        <article class="eval" data-cat="algo">
+          <div class="eval-head">
+            <span class="eval-id">EVAL·04</span>
+            <span class="eval-tag">BUT 1 — 2023/24</span>
+          </div>
+          <h3>Tournée du Père Noël — Optimisation TSP</h3>
+          <p>
+            Résolution du problème du voyageur de commerce en Python : comparaison d'heuristiques
+            (plus proche voisin, optimisations locales), mesure des performances et tests unitaires.
+          </p>
+          <p class="eval-stack">Python · Algorithmique · NumPy · Tests unitaires</p>
+        </article>
+
+        <article class="eval" data-cat="algo">
+          <div class="eval-head">
+            <span class="eval-id">EVAL·05</span>
+            <span class="eval-tag">BUT 1 — 2023/24</span>
+          </div>
+          <h3>Calculatrice Java — Conception UML &amp; POO</h3>
+          <p>
+            Calculatrice supportant des expressions arithmétiques composées, conçue en UML puis
+            implémentée en Java avec une hiérarchie de classes propre (héritage, polymorphisme).
+          </p>
+          <p class="eval-stack">Java · UML · POO</p>
+        </article>
+
+        <article class="eval" data-cat="web">
+          <div class="eval-head">
+            <span class="eval-id">EVAL·06</span>
+            <span class="eval-tag">HACKATHON — 2024</span>
+          </div>
+          <h3>Nuit de l'Info 2024</h3>
+          <p>
+            Application web développée en équipe, en une nuit, en réponse à un sujet national
+            dévoilé le soir même — conception, code et intégration sous forte contrainte de temps.
+          </p>
+          <p class="eval-stack">Travail d'équipe · Web · Sprint</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== CAPACITÉS ===== -->
+    <section class="section" id="capacites">
+      <header class="section-head">
+        <p class="section-kicker">// capabilities — modalités supportées par le modèle</p>
+        <h2>Capacités</h2>
+      </header>
+
+      <div class="cap-grid">
+        <div class="cap-block">
+          <p class="cap-head"><span class="cap-num">01</span> langages</p>
+          <div class="chip-row">
+            <span class="chip">Python</span><span class="chip">Bash</span><span class="chip">SQL</span>
+            <span class="chip">Java</span><span class="chip">PHP</span><span class="chip">HTML / CSS / JS</span>
+          </div>
+        </div>
+        <div class="cap-block">
+          <p class="cap-head"><span class="cap-num">02</span> devops &amp; infra</p>
+          <div class="chip-row">
+            <span class="chip">Git</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span>
+            <span class="chip">CI/CD</span><span class="chip">PostgreSQL</span><span class="chip">Linux</span>
+          </div>
+        </div>
+        <div class="cap-block">
+          <p class="cap-head"><span class="cap-num">03</span> ia &amp; llm</p>
+          <div class="chip-row">
+            <span class="chip">RAG</span><span class="chip">LangChain</span><span class="chip">FAISS</span>
+            <span class="chip">TensorFlow Lite</span><span class="chip">Agents IA</span>
+          </div>
+        </div>
+        <div class="cap-block">
+          <p class="cap-head"><span class="cap-num">04</span> cybersécurité</p>
+          <div class="chip-row">
+            <span class="chip">Fondamentaux ANSSI (SecNumAcadémie)</span>
+            <span class="chip">Nmap</span><span class="chip">Wireshark</span><span class="chip">Analyse de trafic</span>
+            <span class="chip">Durcissement Linux</span><span class="chip">CTF — TryHackMe · Root-Me</span>
+          </div>
+        </div>
+      </div>
+      <p class="cap-footnote">note : le modèle accepte tout prompt sérieux — hallucinations non détectées à ce jour sur le CV.</p>
+    </section>
+
+    <!-- ===== CORPUS ===== -->
+    <section class="section" id="corpus">
+      <header class="section-head">
+        <p class="section-kicker">// training_data — formation</p>
+        <h2>Données d'entraînement</h2>
+      </header>
+
+      <div class="corpus-list">
+        <div class="corpus-item">
+          <span class="corpus-date">en cours</span>
+          <div class="corpus-body">
+            <strong>Cursus Ingénieur — Spécialisation Cybersécurité &amp; IA</strong><br>
+            ECE Paris — en alternance
+          </div>
+        </div>
+        <div class="corpus-item">
+          <span class="corpus-date">2023 → 2026</span>
+          <div class="corpus-body">
+            <strong>BUT Informatique</strong><br>
+            IUT Sorbonne Paris Nord — Villetaneuse (93)<br>
+            <span class="corpus-extra">▸ Hackathon « Nuit de l'Info » 2024&nbsp;&nbsp;▸ MOOC SecNumAcadémie (ANSSI)</span>
+          </div>
+        </div>
+        <div class="corpus-item">
+          <span class="corpus-date">2023</span>
+          <div class="corpus-body">
+            <strong>BAC Général — Spé Maths &amp; NSI, option Maths expertes</strong><br>
+            Lycée Simone de Beauvoir — Garges-lès-Gonesse (95)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DÉPLOIEMENT ===== -->
+    <section class="section section-last" id="deploiement">
+      <header class="section-head">
+        <p class="section-kicker">// quickstart — déployer DK-1 dans votre équipe</p>
+        <h2>Déploiement</h2>
+      </header>
+
+      <div class="deploy-grid">
+        <div class="code-card">
+          <div class="chat-titlebar">
+            <span class="chat-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="chat-title">recruter_dk1.py</span>
+          </div>
+<pre><code><span class="c-kw">from</span> votre_entreprise <span class="c-kw">import</span> equipe_tech
+
+<span class="c-cm"># Étape 1 — ouvrir le canal (aucune clé API requise)</span>
+reponse = equipe_tech.contacter(
+    to=<span class="c-str">"kessavanedhanoush@gmail.com"</span>,
+    subject=<span class="c-str">"Alternance 2026 — fix ISSUE #001"</span>,
+    model=<span class="c-str">"dk-1"</span>,
+)
+
+<span class="c-cm"># Étape 2 — latence constatée : &lt; 24 h</span>
+<span class="c-kw">assert</span> reponse.delai_heures &lt; <span class="c-num">24</span>
+
+<span class="c-cm"># Étape 3 — proposer un entretien, puis déployer en prod 🚀</span>
+equipe_tech.deployer(reponse.candidat)</code></pre>
+        </div>
+
+        <div class="deploy-side">
+          <a class="btn-grad btn-big" href="mailto:kessavanedhanoush@gmail.com?subject=Alternance%202026%20—%20fix%20ISSUE%20%23001">kessavanedhanoush@gmail.com</a>
+          <div class="deploy-links">
+            <a href="../assets/CV_Dhanoush_Kessavane.pdf" download>↓ CV.pdf — poids du modèle</a>
+            <a href="https://github.com/dkessavane" target="_blank" rel="noopener">↗ github.com/dkessavane</a>
+            <a href="https://www.linkedin.com/in/dhanoush-kessavane/" target="_blank" rel="noopener">↗ linkedin/dhanoush-kessavane</a>
+          </div>
+          <div class="deploy-sign">
+            <p class="deploy-sign-label">// signed_by</p>
+            <p class="signature">D. Kessavane</p>
+            <p class="deploy-sign-date">Paris, le <span id="today"></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>
+      DK-1 model card · Conçu et codé à la main par le modèle lui-même — aucun humain n'a été remplacé durant la production de ce document ·
+      Oui, celui-ci contient des dégradés cyan/violet (l'auditeur de la <a href="../index.html">version cyber</a> désapprouve) · <span id="year"></span>
+    </p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
