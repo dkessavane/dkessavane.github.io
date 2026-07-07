@@ -7,13 +7,14 @@ décliné en **deux versions au contenu identique** :
   est… moi. Constat critique DK-001 : aucune alternance détectée à partir de
   septembre 2026 — remédiation en §7. Thème « papier » par défaut, mode nuit
   disponible, imprimable comme un vrai rapport (`Ctrl+P`).
-- **Version IA** (`ia/index.html`) — faux **notebook Jupyter**
-  (`dhanoush_kessavane.ipynb`) qui charge et évalue le modèle « DK-1 » : cellules
-  `In [n]` / `Out[n]` qui s'exécutent au scroll (kernel `busy` → `idle`), barre
-  tqdm, tables pandas, exception `AlternanceNotFoundError` levée en cellule 3
-  (aucune alternance après sept. 2026 — correctif en cellule 8), logs
-  d'entraînement pour l'expérience, widgets ipywidgets pour filtrer les projets.
-  Thème JupyterLab sombre par défaut, thème notebook clair disponible.
+- **Version IA** (`ia/index.html`) — **interface de chat** avec « DK-1 », agent
+  conversationnel chargé du recrutement : réponses en streaming, questions
+  suggérées, champ de saisie fonctionnel (routage par mots-clés). Les réponses
+  embarquent des **panneaux HUD** : fiche cible avec réticule de visée, anomalie
+  critique DK-001 (aucune alternance après sept. 2026), scan des compétences
+  animé, archives d'opérations (expérience), extraction de projets filtrable.
+  Bouton « tout dérouler » (ou `#tout` dans l'URL) pour afficher toute la
+  conversation d'un coup. Esthétique radar sombre / vert phosphore.
 
 Les deux versions sont reliées entre elles par un lien croisé.
 
@@ -25,9 +26,9 @@ portfolio/
 ├── css/style.css       # Styles version cyber (thèmes papier/nuit)
 ├── js/main.js          # Thème, menu mobile, animations, filtres projets
 ├── ia/
-│   ├── index.html      # Version IA — notebook dhanoush_kessavane.ipynb
-│   ├── css/style.css   # Styles version IA (thèmes JupyterLab dark/light)
-│   └── js/main.js      # Idem + exécution des cellules au scroll, kernel, tqdm
+│   ├── index.html      # Version IA — chat avec l'agent DK-1 (+ panneaux HUD)
+│   ├── css/style.css   # Styles version IA (radar sombre, vert phosphore)
+│   └── js/main.js      # Moteur de conversation : streaming, routage, scans
 ├── assets/             # → déposer CV_Dhanoush_Kessavane.pdf ici
 └── projet/             # Archives des projets BUT1/BUT2/BUT3 (non publiées)
 ```

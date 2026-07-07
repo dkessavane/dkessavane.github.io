@@ -1,430 +1,339 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dhanoush_kessavane.ipynb — DK-1</title>
-  <meta name="description" content="Notebook d'évaluation du modèle DK-1 — Dhanoush Kessavane, étudiant ingénieur Cybersécurité & IA (ECE Paris). Exception levée : AlternanceNotFoundError après septembre 2026.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📓</text></svg>">
+  <title>DK-1 — Interface de recrutement · Dhanoush Kessavane</title>
+  <meta name="description" content="DK-1, agent conversationnel chargé du recrutement de Dhanoush Kessavane — étudiant ingénieur Cybersécurité & IA (ECE Paris). Anomalie détectée : aucune alternance après septembre 2026.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Bandeau de confiance -->
-  <div class="trust-strip">
-    <span class="trust-check">✓ Notebook de confiance</span> — diffusion vivement encouragée auprès des recruteurs · toutes les cellules sont vérifiables
+<div class="app">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="side-head">
+      <span class="side-logo" aria-hidden="true">◆</span>
+      <div>
+        <p class="side-title">DK-1</p>
+        <p class="side-sub"><span class="dot dot-on"></span>agent de recrutement — en ligne</p>
+      </div>
+    </div>
+
+    <p class="side-label">// FLUX D'ANALYSE</p>
+    <nav class="side-nav" id="sideNav">
+      <button data-goto="msg-profil">01 · fiche cible</button>
+      <button data-goto="msg-dispo">02 · ⚠ anomalie DK-001</button>
+      <button data-topic="experience">03 · expérience</button>
+      <button data-topic="projets">04 · projets</button>
+      <button data-topic="competences">05 · scan compétences</button>
+      <button data-topic="formation">06 · formation</button>
+      <button data-topic="contact">07 · canal de contact</button>
+      <button data-run="all" class="side-run">▶ tout dérouler</button>
+    </nav>
+
+    <div class="side-foot">
+      <a href="../assets/CV_Dhanoush_Kessavane.pdf" download>⬇ CV_Dhanoush_Kessavane.pdf</a>
+      <a href="https://github.com/dkessavane" target="_blank" rel="noopener">↗ github</a>
+      <a href="https://www.linkedin.com/in/dhanoush-kessavane/" target="_blank" rel="noopener">↗ linkedin</a>
+      <a href="../index.html" class="side-alt">⇄ version cyber (rapport d'audit)</a>
+      <p class="side-note">Interface conçue et codée à la main · <span id="year"></span></p>
+    </div>
+  </aside>
+  <div class="side-overlay" id="sideOverlay"></div>
+
+  <!-- ===== ZONE PRINCIPALE ===== -->
+  <div class="main">
+
+    <header class="chat-head">
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div class="head-id">
+        <span class="head-title">DK-1 · INTERFACE DE RECRUTEMENT</span>
+        <span class="head-sub">liaison chiffrée établie — canal recruteur</span>
+      </div>
+      <div class="head-status">
+        <span class="head-metric"><span class="dot dot-on"></span>EN LIGNE</span>
+        <span class="head-metric head-metric-hide">LATENCE&nbsp;: &lt;&nbsp;24&nbsp;h</span>
+      </div>
+    </header>
+
+    <main class="chat" id="chat" aria-live="polite">
+      <pre class="boot" id="boot" aria-hidden="true"></pre>
+      <noscript>
+        <div class="noscript">
+          <p><strong>DK-1 a besoin de JavaScript pour converser.</strong>
+          En attendant : <a href="../index.html">version cyber du portfolio</a> ·
+          <a href="../assets/CV_Dhanoush_Kessavane.pdf" download>CV.pdf</a> ·
+          <a href="mailto:kessavanedhanoush@gmail.com">kessavanedhanoush@gmail.com</a></p>
+        </div>
+      </noscript>
+    </main>
+
+    <div class="composer">
+      <div class="chips" id="chips">
+        <button data-topic="experience">son expérience</button>
+        <button data-topic="projets">ses projets</button>
+        <button data-topic="competences">scanner ses compétences</button>
+        <button data-topic="formation">sa formation</button>
+        <button data-topic="contact">le contacter</button>
+        <button data-topic="salaire">💰 salaire ?</button>
+      </div>
+      <form class="composer-form" id="composerForm" autocomplete="off">
+        <input type="text" id="composerInput" placeholder="Posez une question sur le candidat…" aria-label="Votre question">
+        <button type="submit" aria-label="Envoyer">➤</button>
+      </form>
+      <p class="composer-note">DK-1 peut se tromper sur tout — sauf sur la disponibilité de Dhanoush : alternance dès septembre 2026.</p>
+    </div>
+
   </div>
+</div>
 
-  <!-- ===== BARRE DE TITRE ===== -->
-  <header class="jp-header">
-    <div class="jp-titlebar">
-      <span class="jp-logo" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="jp-filename">dhanoush_kessavane<span class="jp-ext">.ipynb</span></span>
-      <span class="jp-checkpoint">Dernier checkpoint : à l'instant (non résolu : 1 alternance manquante)</span>
-      <div class="jp-right">
-        <span class="kernel-pill" id="kernelPill">
-          <span class="kernel-dot" id="kernelDot"></span>
-          Kernel&nbsp;: DK-1 · <span id="kernelState">idle</span>
-        </span>
-        <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
-          <span class="toggle-light">thème clair</span>
-          <span class="toggle-dark">thème sombre</span>
-        </button>
-        <button class="burger" id="burger" aria-label="Sommaire"><span></span><span></span><span></span></button>
+<!-- ================= TEMPLATES DES PANNEAUX ================= -->
+
+<template id="tpl-profil">
+  <div class="hud">
+    <div class="hud-head"><span>CIBLE IDENTIFIÉE</span><span class="hud-flag"><span class="dot dot-on"></span>VERROUILLÉE</span></div>
+    <div class="hud-body profil-grid">
+      <div class="reticle" aria-hidden="true">
+        <div class="ret-ring"></div>
+        <div class="ret-cross"></div>
+        <span class="ret-tag">SCAN</span>
+      </div>
+      <dl class="profil-data">
+        <dt>nom</dt><dd>KESSAVANE Dhanoush</dd>
+        <dt>classe</dt><dd>Étudiant ingénieur — Cybersécurité &amp; IA (ECE Paris)</dd>
+        <dt>origine</dt><dd>BUT Informatique — IUT Sorbonne Paris Nord (2023 → 2026)</dd>
+        <dt>position</dt><dd>Paris (75)</dd>
+        <dt>occupation</dt><dd>Alternant Infrastructure Automation &amp; IA — NTT France</dd>
+        <dt>alignement</dt><dd>MOOC SecNumAcadémie (ANSSI)</dd>
+        <dt>disponibilité</dt><dd class="hl">alternance dès septembre 2026</dd>
+      </dl>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-alerte">
+  <div class="hud hud-crit">
+    <div class="hud-head"><span>⚠ ANOMALIE CRITIQUE — RÉF. DK-001</span><span class="hud-flag hud-flag-crit"><span class="dot dot-crit"></span>NON RÉSOLUE</span></div>
+    <div class="hud-body">
+      <p class="alert-main">Aucun contrat d'alternance détecté à partir de <strong>septembre 2026</strong> sur les périmètres DevOps, Cloud, Cybersécurité et IA.</p>
+      <dl class="alert-data">
+        <dt>impact</dt><dd>perte d'un profil formé au développement full stack, à l'automatisation d'infrastructures et aux systèmes IA — déjà rôdé en entreprise (NTT France, FNAC DARTY)</dd>
+        <dt>exploitabilité</dt><dd>TRIVIALE — un e-mail suffit, aucun outil offensif requis</dd>
+        <dt>correctif</dt><dd>recruter la cible — disponible immédiatement</dd>
+      </dl>
+      <div class="hud-actions">
+        <a class="btn-hud btn-hud-solid" href="mailto:kessavanedhanoush@gmail.com?subject=Correctif%20DK-001%20—%20Alternance%202026">▶ APPLIQUER LE CORRECTIF</a>
+        <a class="btn-hud" href="../assets/CV_Dhanoush_Kessavane.pdf" download>⬇ CV.PDF</a>
       </div>
     </div>
-    <div class="jp-menubar" aria-hidden="true">
-      <span>Fichier</span><span>Édition</span><span>Affichage</span><span>Exécution</span><span>Noyau</span><span>Widgets</span><span>Aide</span>
-      <a class="jp-menucv" href="../assets/CV_Dhanoush_Kessavane.pdf" download aria-hidden="false">⬇ Télécharger les poids (CV.pdf)</a>
+  </div>
+</template>
+
+<template id="tpl-experience">
+  <div class="hud">
+    <div class="hud-head"><span>ARCHIVES — OPÉRATIONS</span><span class="hud-flag">2 ENTRÉES</span></div>
+    <div class="hud-body">
+      <article class="op">
+        <div class="op-meta">
+          <span class="op-dates">2025-12 → 2026-09</span>
+          <span class="op-flag op-flag-live">EN COURS</span>
+        </div>
+        <h3>Alternant Infrastructure Automation &amp; IA — <em>NTT France, Paris (75)</em></h3>
+        <ul class="checklist">
+          <li>développement d'une application <strong>full stack d'automatisation de staging réseau</strong></li>
+          <li>intégration d'<strong>agents IA</strong> pour la supervision d'infrastructures réseau</li>
+          <li>contribution à des environnements proches du <strong>DevOps</strong></li>
+          <li>optimisation et <strong>monitoring</strong> des infrastructures IT</li>
+        </ul>
+        <p class="op-stack">matériel saisi : Python · Automatisation · Agents IA · Réseau · Monitoring</p>
+      </article>
+      <article class="op">
+        <div class="op-meta">
+          <span class="op-dates">2025-01 → 2025-03</span>
+          <span class="op-flag">TERMINÉE</span>
+        </div>
+        <h3>Technicien Support &amp; Gestionnaire IT — <em>FNAC DARTY, Ivry-sur-Seine (94)</em></h3>
+        <ul class="checklist">
+          <li>support utilisateurs (VIP inclus), suivi de tickets et coordination IT</li>
+          <li>gestion des postes, imprimantes et comptes <strong>Active Directory</strong></li>
+          <li>déploiement de logiciels via <strong>MECM</strong></li>
+          <li>création d'une application <strong>PowerApps</strong></li>
+          <li>inventaire du matériel obsolète (démarche RSE)</li>
+        </ul>
+        <p class="op-stack">matériel saisi : Active Directory · MECM · PowerApps · ITSM</p>
+      </article>
     </div>
-  </header>
+  </div>
+</template>
 
-  <!-- ===== SOMMAIRE (ToC JupyterLab) ===== -->
-  <nav class="toc" id="navLinks" aria-label="Sommaire du notebook">
-    <p class="toc-title">SOMMAIRE</p>
-    <a href="#intro">md&nbsp;&nbsp;·&nbsp;DK-1, le modèle</a>
-    <a href="#load">[1]&nbsp;·&nbsp;chargement</a>
-    <a href="#summary">[2]&nbsp;·&nbsp;summary()</a>
-    <a href="#warning">[3]&nbsp;·&nbsp;⚠ exception</a>
-    <a href="#training">[4]&nbsp;·&nbsp;expérience</a>
-    <a href="#evals">[5]&nbsp;·&nbsp;projets</a>
-    <a href="#skills">[6]&nbsp;·&nbsp;compétences</a>
-    <a href="#formation">[7]&nbsp;·&nbsp;formation</a>
-    <a href="#contact">[8]&nbsp;·&nbsp;contact</a>
-    <a class="toc-extra" href="../assets/CV_Dhanoush_Kessavane.pdf" download>⬇ CV.pdf</a>
-    <a class="toc-extra" href="../index.html">⇄ version cyber</a>
-  </nav>
-
-  <main class="notebook">
-
-    <!-- ===== CELLULE MARKDOWN : INTRO ===== -->
-    <section class="cell cell-md" id="intro">
-      <div class="gutter"></div>
-      <div class="md">
-        <h1>DK-1 — un modèle disponible en alternance</h1>
-        <p class="badges" aria-label="Badges">
-          <span class="badge"><b>status</b><i class="b-green">open to work</i></span>
-          <span class="badge"><b>alternance</b><i class="b-orange">sept. 2026</i></span>
-          <span class="badge"><b>base</b><i class="b-blue">Paris (75)</i></span>
-          <span class="badge"><b>domaines</b><i class="b-purple">devops · cloud · cyber · ia</i></span>
-        </p>
-        <p>
-          Ce notebook charge, inspecte et évalue <strong>Dhanoush Kessavane</strong> — étudiant ingénieur en
-          spécialisation <strong>Cybersécurité &amp; IA</strong> à l'ECE Paris, issu d'un BUT Informatique,
-          actuellement alternant <strong>Infrastructure Automation &amp; IA chez NTT France</strong>.
-        </p>
-        <p class="md-note">
-          ⚠️ L'exécution de la cellule <code>In [3]</code> lève une exception connue.
-          Le correctif est documenté en cellule <code>In [8]</code>.
-        </p>
+<template id="tpl-projets">
+  <div class="hud">
+    <div class="hud-head"><span>EXTRACTION — PROJETS</span><span class="hud-flag">6 ÉLÉMENTS</span></div>
+    <div class="hud-body">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">tous</button>
+        <button class="filter-btn" data-filter="ia">ia / ml</button>
+        <button class="filter-btn" data-filter="web">web / full-stack</button>
+        <button class="filter-btn" data-filter="algo">algo / poo</button>
       </div>
-    </section>
+      <div class="proj-grid">
 
-    <!-- ===== In [1] : CHARGEMENT ===== -->
-    <section class="cell cell-code" id="load" data-exec="1">
-      <div class="cell-input">
-        <div class="gutter"><span class="prompt prompt-in">In&nbsp;[<span class="exec-count">1</span>]:</span></div>
-        <pre class="code"><code><span class="c-kw">import</span> dhanoush <span class="c-kw">as</span> dk   <span class="c-cm"># étudiant ingénieur — Cybersécurité &amp; IA, ECE Paris</span>
-
-model = dk.load_model(<span class="c-str">"DK-1"</span>, device=<span class="c-str">"paris"</span>, precision=<span class="c-str">"pleine"</span>)</code></pre>
-      </div>
-      <div class="cell-output">
-        <div class="gutter"></div>
-        <div class="out-body">
-          <pre class="stream" id="loadStream"><span class="load-line">Chargement des poids depuis ~/.cache/ece-paris/DK-1 …</span>
-<span class="load-line">100%|<span class="tqdm-track"><span class="tqdm-fill" id="tqdmFill"></span></span>| 22 ans/22 ans [00:03&lt;00:00, 7.3 ans/s]</span>
-<span class="load-line"><span class="ok">✓</span> Pré-entraînement  : BUT Informatique — IUT Sorbonne Paris Nord (2023 → 2026)</span>
-<span class="load-line"><span class="ok">✓</span> Spécialisation    : Cybersécurité &amp; IA — ECE Paris (en alternance)</span>
-<span class="load-line"><span class="ok">✓</span> Fine-tuning actif : NTT France — Infrastructure Automation &amp; IA</span>
-<span class="load-line"><span class="ok">✓</span> Alignement        : MOOC SecNumAcadémie (ANSSI)</span>
-<span class="load-line">Modèle prêt. Aucun GPU requis — fonctionne au café.</span></pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== In [2] : SUMMARY ===== -->
-    <section class="cell cell-code" id="summary" data-exec="2">
-      <div class="cell-input">
-        <div class="gutter"><span class="prompt prompt-in">In&nbsp;[<span class="exec-count">2</span>]:</span></div>
-        <pre class="code"><code>model.summary()</code></pre>
-      </div>
-      <div class="cell-output">
-        <div class="gutter"><span class="prompt prompt-out">Out[2]:</span></div>
-        <div class="out-body">
-          <table class="df">
-            <thead><tr><th></th><th>DK-1</th></tr></thead>
-            <tbody>
-              <tr><th>statut</th><td>Alternant Infrastructure Automation &amp; IA — NTT France (jusqu'à sept. 2026)</td></tr>
-              <tr><th>recherche</th><td>Alternance dès septembre 2026</td></tr>
-              <tr><th>domaines</th><td>DevOps · Cloud · Cybersécurité · IA</td></tr>
-              <tr><th>base</th><td>Paris (75)</td></tr>
-              <tr><th>certification</th><td>MOOC SecNumAcadémie (ANSSI)</td></tr>
-              <tr><th>salaire</th><td><span class="nan">NaN</span>  <span class="df-comment"># à négocier</span></td></tr>
-            </tbody>
-          </table>
-          <p class="df-note">6 rows × 1 column · dtype: object</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== In [3] : EXCEPTION ===== -->
-    <section class="cell cell-code" id="warning" data-exec="3">
-      <div class="cell-input">
-        <div class="gutter"><span class="prompt prompt-in">In&nbsp;[<span class="exec-count">3</span>]:</span></div>
-        <pre class="code"><code>model.check_alternance(apres=<span class="c-str">"2026-09"</span>)</code></pre>
-      </div>
-      <div class="cell-output">
-        <div class="gutter"></div>
-        <div class="out-body">
-          <pre class="traceback">---------------------------------------------------------------------------
-<span class="tb-name">AlternanceNotFoundError</span>                   Traceback (most recent call last)
-Cell <span class="tb-loc">In[3], line 1</span>
-<span class="tb-arrow">----&gt; 1</span> model.check_alternance(apres=<span class="c-str">"2026-09"</span>)
-
-<span class="tb-name">AlternanceNotFoundError</span>: aucun contrat d'alternance détecté après 2026-09.
-
-  Impact       : un modèle déjà rôdé en entreprise (NTT France, FNAC DARTY),
-                 opérationnel sur DevOps / Cloud / Cyber / IA, restera idle.
-  Sévérité     : critique — exploitabilité triviale (un e-mail suffit).
-  Correctif    : disponible immédiatement → exécuter la cellule In [8].</pre>
-          <div class="widget-row">
-            <a class="btn-run" href="mailto:kessavanedhanoush@gmail.com?subject=Fix%20AlternanceNotFoundError%20—%20Alternance%202026">▶ Corriger l'exception</a>
-            <a class="btn-widget" href="../assets/CV_Dhanoush_Kessavane.pdf" download>⬇ CV.pdf</a>
+        <article class="proj" data-cat="ia web">
+          <div class="proj-head"><span class="proj-id">PIÈCE #01</span><span class="proj-tag">BUT 3 — 2025/26</span></div>
+          <h3>Voyage Assistant — Chatbot IA &amp; RAG en production</h3>
+          <p>Plateforme full-stack de réservation multi-transport (182 000+ liaisons) dotée d'un assistant IA
+             conversationnel : vérification d'identité, modification réelle de réservation en base, réclamations.
+             RAG avec reranking. <strong>Déployé en ligne</strong> sur Hugging Face Spaces.
+             Rôle : front-end, design, documentation.</p>
+          <p class="proj-stack">FastAPI · LangChain · FAISS · RAG · PostgreSQL · Docker · Gemini</p>
+          <div class="proj-links">
+            <a href="https://optimalako-voyage-assistant.hf.space" target="_blank" rel="noopener">[DÉMO LIVE]</a>
+            <a href="https://github.com/optmlako2004/chatbot" target="_blank" rel="noopener">[CODE]</a>
           </div>
-        </div>
-      </div>
-    </section>
+        </article>
 
-    <!-- ===== MD : EXPÉRIENCE ===== -->
-    <section class="cell cell-md">
-      <div class="gutter"></div>
-      <div class="md"><h2>Historique d'entraînement <span class="h2-sub">— expérience professionnelle</span></h2></div>
-    </section>
-
-    <!-- ===== In [4] : EXPÉRIENCE ===== -->
-    <section class="cell cell-code" id="training" data-exec="4">
-      <div class="cell-input">
-        <div class="gutter"><span class="prompt prompt-in">In&nbsp;[<span class="exec-count">4</span>]:</span></div>
-        <pre class="code"><code><span class="c-kw">for</span> run <span class="c-kw">in</span> model.historique_entrainement():
-    <span class="c-fn">print</span>(run)</code></pre>
-      </div>
-      <div class="cell-output">
-        <div class="gutter"></div>
-        <div class="out-body">
-          <pre class="stream run-log">
-<span class="run-head">── Run 2025-12 → 2026-09 ── NTT France, Paris (75) ─────────────── <span class="flag-live">[EN COURS]</span></span>
-<strong>Alternant Infrastructure Automation &amp; IA</strong>
-  <span class="ok">✓</span> développement d'une application full stack d'automatisation de staging réseau
-  <span class="ok">✓</span> intégration d'agents IA pour la supervision d'infrastructures réseau
-  <span class="ok">✓</span> contribution à des environnements proches du DevOps
-  <span class="ok">✓</span> optimisation et monitoring des infrastructures IT
-  <span class="run-stack">stack : Python · Automatisation · Agents IA · Réseau · Monitoring</span>
-
-<span class="run-head">── Run 2025-01 → 2025-03 ── FNAC DARTY, Ivry-sur-Seine (94) ────── <span class="flag-done">[TERMINÉ]</span></span>
-<strong>Technicien Support &amp; Gestionnaire IT</strong>
-  <span class="ok">✓</span> support utilisateurs (VIP inclus), suivi de tickets et coordination IT
-  <span class="ok">✓</span> gestion des postes, imprimantes et comptes Active Directory
-  <span class="ok">✓</span> déploiement de logiciels via MECM
-  <span class="ok">✓</span> création d'une application PowerApps
-  <span class="ok">✓</span> inventaire du matériel obsolète (démarche RSE)
-  <span class="run-stack">stack : Active Directory · MECM · PowerApps · ITSM</span></pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== MD : PROJETS ===== -->
-    <section class="cell cell-md">
-      <div class="gutter"></div>
-      <div class="md"><h2>Évaluations <span class="h2-sub">— projets versés au benchmark, certains vérifiables en ligne</span></h2></div>
-    </section>
-
-    <!-- ===== In [5] : PROJETS ===== -->
-    <section class="cell cell-code" id="evals" data-exec="5">
-      <div class="cell-input">
-        <div class="gutter"><span class="prompt prompt-in">In&nbsp;[<span class="exec-count">5</span>]:</span></div>
-        <pre class="code"><code>dk.projets.afficher(filtre=widgets.ToggleButtons(
-    options=[<span class="c-str">"tous"</span>, <span class="c-str">"ia / ml"</span>, <span class="c-str">"web / full-stack"</span>, <span class="c-str">"algo / poo"</span>],
-))  <span class="c-cm"># widget interactif — utilisez les boutons ci-dessous</span></code></pre>
-      </div>
-      <div class="cell-output">
-        <div class="gutter"></div>
-        <div class="out-body">
-
-          <div class="filter-bar" id="filterBar" role="group" aria-label="Filtrer les projets">
-            <button class="filter-btn active" data-filter="all">tous</button>
-            <button class="filter-btn" data-filter="ia">ia / ml</button>
-            <button class="filter-btn" data-filter="web">web / full-stack</button>
-            <button class="filter-btn" data-filter="algo">algo / poo</button>
+        <article class="proj" data-cat="ia">
+          <div class="proj-head"><span class="proj-id">PIÈCE #02</span><span class="proj-tag">BUT 3 — 2025/26</span></div>
+          <h3>FacePredictor — Deep Learning embarqué sur Android</h3>
+          <p>Application mobile prédisant âge, genre et ethnicité à partir d'un visage, en temps réel.
+             Trois stratégies de modélisation comparées (backbone EfficientNetB0), entraînement sur UTKFace
+             (23 708 images), déploiement embarqué via TensorFlow Lite. Rôle : front-end, design, documentation.</p>
+          <p class="proj-stack">TensorFlow · TFLite · Kotlin · MediaPipe · Firebase · CameraX</p>
+          <div class="proj-links">
+            <a href="https://github.com/optmlako2004/face-analysis-deep-learning" target="_blank" rel="noopener">[CODE]</a>
           </div>
+        </article>
 
-          <div class="proj-grid" id="projectsGrid">
+        <article class="proj" data-cat="web">
+          <div class="proj-head"><span class="proj-id">PIÈCE #03</span><span class="proj-tag">BUT 2 — 2024/25</span></div>
+          <h3>Plateforme web de jeux — Architecture MVC</h3>
+          <p>Site web développé en PHP selon le pattern MVC (Models / Views / Controllers), adossé à une base
+             de données SQL, avec envoi d'e-mails transactionnels via PHPMailer.</p>
+          <p class="proj-stack">PHP · MVC · SQL · PHPMailer</p>
+        </article>
 
-            <article class="proj" data-cat="ia web">
-              <div class="proj-head">
-                <span class="proj-id">projets[0]</span>
-                <span class="proj-tag">BUT 3 — 2025/26</span>
-              </div>
-              <h3>Voyage Assistant — Chatbot IA &amp; RAG en production</h3>
-              <p>
-                Plateforme full-stack de réservation multi-transport (182 000+ liaisons) dotée d'un
-                assistant IA conversationnel : vérification d'identité, modification réelle de réservation
-                en base, réclamations. RAG avec reranking. <strong>Déployé en ligne</strong> sur Hugging Face Spaces.
-                Rôle : front-end, design, documentation.
-              </p>
-              <p class="proj-stack">FastAPI · LangChain · FAISS · RAG · PostgreSQL · Docker · Gemini</p>
-              <div class="proj-links">
-                <a href="https://optimalako-voyage-assistant.hf.space" target="_blank" rel="noopener">[demo_live]</a>
-                <a href="https://github.com/optmlako2004/chatbot" target="_blank" rel="noopener">[code_source]</a>
-              </div>
-            </article>
+        <article class="proj" data-cat="algo">
+          <div class="proj-head"><span class="proj-id">PIÈCE #04</span><span class="proj-tag">BUT 1 — 2023/24</span></div>
+          <h3>Tournée du Père Noël — Optimisation TSP</h3>
+          <p>Résolution du problème du voyageur de commerce en Python : comparaison d'heuristiques (plus proche
+             voisin, optimisations locales), mesure des performances et tests unitaires.</p>
+          <p class="proj-stack">Python · Algorithmique · NumPy · Tests unitaires</p>
+        </article>
 
-            <article class="proj" data-cat="ia">
-              <div class="proj-head">
-                <span class="proj-id">projets[1]</span>
-                <span class="proj-tag">BUT 3 — 2025/26</span>
-              </div>
-              <h3>FacePredictor — Deep Learning embarqué sur Android</h3>
-              <p>
-                Application mobile prédisant âge, genre et ethnicité à partir d'un visage, en temps réel.
-                Trois stratégies de modélisation comparées (backbone EfficientNetB0), entraînement sur
-                UTKFace (23 708 images), déploiement embarqué via TensorFlow Lite.
-                Rôle : front-end, design, documentation.
-              </p>
-              <p class="proj-stack">TensorFlow · TFLite · Kotlin · MediaPipe · Firebase · CameraX</p>
-              <div class="proj-links">
-                <a href="https://github.com/optmlako2004/face-analysis-deep-learning" target="_blank" rel="noopener">[code_source]</a>
-              </div>
-            </article>
+        <article class="proj" data-cat="algo">
+          <div class="proj-head"><span class="proj-id">PIÈCE #05</span><span class="proj-tag">BUT 1 — 2023/24</span></div>
+          <h3>Calculatrice Java — Conception UML &amp; POO</h3>
+          <p>Calculatrice supportant des expressions arithmétiques composées, conçue en UML puis implémentée
+             en Java avec une hiérarchie de classes propre (héritage, polymorphisme).</p>
+          <p class="proj-stack">Java · UML · POO</p>
+        </article>
 
-            <article class="proj" data-cat="web">
-              <div class="proj-head">
-                <span class="proj-id">projets[2]</span>
-                <span class="proj-tag">BUT 2 — 2024/25</span>
-              </div>
-              <h3>Plateforme web de jeux — Architecture MVC</h3>
-              <p>
-                Site web développé en PHP selon le pattern MVC (Models / Views / Controllers),
-                adossé à une base de données SQL, avec envoi d'e-mails transactionnels via PHPMailer.
-              </p>
-              <p class="proj-stack">PHP · MVC · SQL · PHPMailer</p>
-            </article>
+        <article class="proj" data-cat="web">
+          <div class="proj-head"><span class="proj-id">PIÈCE #06</span><span class="proj-tag">HACKATHON — 2024</span></div>
+          <h3>Nuit de l'Info 2024</h3>
+          <p>Application web développée en équipe, en une nuit, en réponse à un sujet national dévoilé le soir
+             même — conception, code et intégration sous forte contrainte de temps.</p>
+          <p class="proj-stack">Travail d'équipe · Web · Sprint</p>
+        </article>
 
-            <article class="proj" data-cat="algo">
-              <div class="proj-head">
-                <span class="proj-id">projets[3]</span>
-                <span class="proj-tag">BUT 1 — 2023/24</span>
-              </div>
-              <h3>Tournée du Père Noël — Optimisation TSP</h3>
-              <p>
-                Résolution du problème du voyageur de commerce en Python : comparaison d'heuristiques
-                (plus proche voisin, optimisations locales), mesure des performances et tests unitaires.
-              </p>
-              <p class="proj-stack">Python · Algorithmique · NumPy · Tests unitaires</p>
-            </article>
+      </div>
+    </div>
+  </div>
+</template>
 
-            <article class="proj" data-cat="algo">
-              <div class="proj-head">
-                <span class="proj-id">projets[4]</span>
-                <span class="proj-tag">BUT 1 — 2023/24</span>
-              </div>
-              <h3>Calculatrice Java — Conception UML &amp; POO</h3>
-              <p>
-                Calculatrice supportant des expressions arithmétiques composées, conçue en UML puis
-                implémentée en Java avec une hiérarchie de classes propre (héritage, polymorphisme).
-              </p>
-              <p class="proj-stack">Java · UML · POO</p>
-            </article>
+<template id="tpl-scan">
+  <div class="hud">
+    <div class="hud-head"><span>SCAN DES CAPACITÉS</span><span class="hud-flag"><span class="dot dot-on"></span>ANALYSE</span></div>
+    <div class="hud-body scan-body">
+      <div class="scan-block">
+        <p class="scan-title">SCAN 1/4 — LANGAGES</p>
+        <div class="scan-row"><span>Python</span><span class="bar"><i style="--w:96%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>Bash</span><span class="bar"><i style="--w:88%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>SQL</span><span class="bar"><i style="--w:90%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>Java</span><span class="bar"><i style="--w:84%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>PHP</span><span class="bar"><i style="--w:82%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>HTML / CSS / JS</span><span class="bar"><i style="--w:92%"></i></span><b>ok</b></div>
+      </div>
+      <div class="scan-block">
+        <p class="scan-title">SCAN 2/4 — DEVOPS &amp; INFRA</p>
+        <div class="scan-row"><span>Git</span><span class="bar"><i style="--w:94%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>Docker</span><span class="bar"><i style="--w:90%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>GitHub Actions · CI/CD</span><span class="bar"><i style="--w:86%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>PostgreSQL</span><span class="bar"><i style="--w:85%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>Linux</span><span class="bar"><i style="--w:91%"></i></span><b>ok</b></div>
+      </div>
+      <div class="scan-block">
+        <p class="scan-title">SCAN 3/4 — IA &amp; LLM</p>
+        <div class="scan-row"><span>RAG</span><span class="bar"><i style="--w:93%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>LangChain</span><span class="bar"><i style="--w:89%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>FAISS</span><span class="bar"><i style="--w:87%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>TensorFlow Lite</span><span class="bar"><i style="--w:84%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>Agents IA</span><span class="bar"><i style="--w:90%"></i></span><b>ok</b></div>
+      </div>
+      <div class="scan-block">
+        <p class="scan-title">SCAN 4/4 — CYBERSÉCURITÉ</p>
+        <div class="scan-row"><span>Fondamentaux ANSSI</span><span class="bar"><i style="--w:92%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>Nmap · Wireshark</span><span class="bar"><i style="--w:88%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>Analyse de trafic</span><span class="bar"><i style="--w:86%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>Durcissement Linux</span><span class="bar"><i style="--w:85%"></i></span><b>ok</b></div>
+        <div class="scan-row"><span>CTF — TryHackMe · Root-Me</span><span class="bar"><i style="--w:87%"></i></span><b>ok</b></div>
+      </div>
+      <p class="scan-verdict">VERDICT : OPÉRATIONNEL — ports 22, 80 et 443 ouverts à toute proposition sérieuse.</p>
+    </div>
+  </div>
+</template>
 
-            <article class="proj" data-cat="web">
-              <div class="proj-head">
-                <span class="proj-id">projets[5]</span>
-                <span class="proj-tag">HACKATHON — 2024</span>
-              </div>
-              <h3>Nuit de l'Info 2024</h3>
-              <p>
-                Application web développée en équipe, en une nuit, en réponse à un sujet national
-                dévoilé le soir même — conception, code et intégration sous forte contrainte de temps.
-              </p>
-              <p class="proj-stack">Travail d'équipe · Web · Sprint</p>
-            </article>
-
-          </div>
+<template id="tpl-formation">
+  <div class="hud">
+    <div class="hud-head"><span>HISTORIQUE — FORMATION</span><span class="hud-flag">3 ENTRÉES</span></div>
+    <div class="hud-body">
+      <div class="edu">
+        <span class="edu-date">EN COURS</span>
+        <div>
+          <strong>Cursus Ingénieur — Spécialisation Cybersécurité &amp; IA</strong><br>
+          ECE Paris — en alternance
         </div>
       </div>
-    </section>
-
-    <!-- ===== In [6] : COMPÉTENCES ===== -->
-    <section class="cell cell-code" id="skills" data-exec="6">
-      <div class="cell-input">
-        <div class="gutter"><span class="prompt prompt-in">In&nbsp;[<span class="exec-count">6</span>]:</span></div>
-        <pre class="code"><code>model.competences()   <span class="c-cm"># hallucinations non détectées à ce jour sur le CV</span></code></pre>
-      </div>
-      <div class="cell-output">
-        <div class="gutter"><span class="prompt prompt-out">Out[6]:</span></div>
-        <div class="out-body">
-          <pre class="stream dict-out">{
-    <span class="c-str">"langages"</span>:      [<span class="c-str">"Python"</span>, <span class="c-str">"Bash"</span>, <span class="c-str">"SQL"</span>, <span class="c-str">"Java"</span>, <span class="c-str">"PHP"</span>, <span class="c-str">"HTML/CSS/JS"</span>],
-    <span class="c-str">"devops_infra"</span>:  [<span class="c-str">"Git"</span>, <span class="c-str">"Docker"</span>, <span class="c-str">"GitHub Actions"</span>, <span class="c-str">"CI/CD"</span>, <span class="c-str">"PostgreSQL"</span>, <span class="c-str">"Linux"</span>],
-    <span class="c-str">"ia_llm"</span>:        [<span class="c-str">"RAG"</span>, <span class="c-str">"LangChain"</span>, <span class="c-str">"FAISS"</span>, <span class="c-str">"TensorFlow Lite"</span>, <span class="c-str">"Agents IA"</span>],
-    <span class="c-str">"cybersecurite"</span>: [<span class="c-str">"Fondamentaux ANSSI (SecNumAcadémie)"</span>, <span class="c-str">"Nmap"</span>, <span class="c-str">"Wireshark"</span>,
-                      <span class="c-str">"Analyse de trafic"</span>, <span class="c-str">"Durcissement Linux"</span>, <span class="c-str">"CTF — TryHackMe · Root-Me"</span>],
-}</pre>
+      <div class="edu">
+        <span class="edu-date">2023 → 2026</span>
+        <div>
+          <strong>BUT Informatique</strong><br>
+          IUT Sorbonne Paris Nord — Villetaneuse (93)<br>
+          <span class="edu-extra">▸ Hackathon « Nuit de l'Info » 2024&nbsp;&nbsp;▸ MOOC SecNumAcadémie (ANSSI)</span>
         </div>
       </div>
-    </section>
-
-    <!-- ===== In [7] : FORMATION ===== -->
-    <section class="cell cell-code" id="formation" data-exec="7">
-      <div class="cell-input">
-        <div class="gutter"><span class="prompt prompt-in">In&nbsp;[<span class="exec-count">7</span>]:</span></div>
-        <pre class="code"><code>dk.formation.sort_values(<span class="c-str">"periode"</span>, ascending=<span class="c-kw">False</span>)</code></pre>
-      </div>
-      <div class="cell-output">
-        <div class="gutter"><span class="prompt prompt-out">Out[7]:</span></div>
-        <div class="out-body">
-          <table class="df df-wide">
-            <thead><tr><th></th><th>période</th><th>diplôme</th><th>établissement</th></tr></thead>
-            <tbody>
-              <tr>
-                <th>0</th>
-                <td>en cours</td>
-                <td>Cursus Ingénieur — Spécialisation Cybersécurité &amp; IA (alternance)</td>
-                <td>ECE Paris</td>
-              </tr>
-              <tr>
-                <th>1</th>
-                <td>2023 → 2026</td>
-                <td>BUT Informatique<br><span class="df-comment"># Hackathon « Nuit de l'Info » 2024 · MOOC SecNumAcadémie (ANSSI)</span></td>
-                <td>IUT Sorbonne Paris Nord — Villetaneuse (93)</td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td>2023</td>
-                <td>BAC Général — Spé Maths &amp; NSI, option Maths expertes</td>
-                <td>Lycée Simone de Beauvoir — Garges-lès-Gonesse (95)</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="df-note">3 rows × 3 columns</p>
+      <div class="edu">
+        <span class="edu-date">2023</span>
+        <div>
+          <strong>BAC Général — Spé Maths &amp; NSI, option Maths expertes</strong><br>
+          Lycée Simone de Beauvoir — Garges-lès-Gonesse (95)
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</template>
 
-    <!-- ===== MD : CONTACT ===== -->
-    <section class="cell cell-md">
-      <div class="gutter"></div>
-      <div class="md"><h2>Correctif <span class="h2-sub">— résoudre l'AlternanceNotFoundError de la cellule In [3]</span></h2></div>
-    </section>
-
-    <!-- ===== In [8] : CONTACT ===== -->
-    <section class="cell cell-code" id="contact" data-exec="8">
-      <div class="cell-input">
-        <div class="gutter"><span class="prompt prompt-in">In&nbsp;[<span class="exec-count">8</span>]:</span></div>
-        <pre class="code"><code>canal = dk.contact(
-    to      = <span class="c-str">"kessavanedhanoush@gmail.com"</span>,
-    subject = <span class="c-str">"Alternance 2026 — fix AlternanceNotFoundError"</span>,
-)
-canal.send()   <span class="c-cm"># latence constatée : &lt; 24 h</span></code></pre>
+<template id="tpl-contact">
+  <div class="hud">
+    <div class="hud-head"><span>CANAL DE COMMUNICATION</span><span class="hud-flag"><span class="dot dot-on"></span>OUVERT</span></div>
+    <div class="hud-body">
+      <div class="hud-actions contact-main">
+        <a class="btn-hud btn-hud-solid btn-hud-big" href="mailto:kessavanedhanoush@gmail.com?subject=Alternance%202026%20—%20correctif%20DK-001">▶ kessavanedhanoush@gmail.com</a>
       </div>
-      <div class="cell-output">
-        <div class="gutter"></div>
-        <div class="out-body">
-          <pre class="stream"><span class="ok">✓</span> Canal ouvert. Réponse attendue sous 24 h. Entretien possible dès cette semaine.</pre>
-          <div class="widget-row widget-row-big">
-            <a class="btn-run btn-run-big" href="mailto:kessavanedhanoush@gmail.com?subject=Alternance%202026%20—%20fix%20AlternanceNotFoundError">▶ kessavanedhanoush@gmail.com</a>
-          </div>
-          <div class="widget-row">
-            <a class="btn-widget" href="../assets/CV_Dhanoush_Kessavane.pdf" download>⬇ CV.pdf</a>
-            <a class="btn-widget" href="https://github.com/dkessavane" target="_blank" rel="noopener">github.com/dkessavane ↗</a>
-            <a class="btn-widget" href="https://www.linkedin.com/in/dhanoush-kessavane/" target="_blank" rel="noopener">linkedin ↗</a>
-          </div>
-          <div class="signoff">
-            <span class="df-comment"># signé :</span>
-            <span class="signature">D. Kessavane</span>
-            <span class="signoff-date">Paris, le <span id="today"></span></span>
-          </div>
-        </div>
+      <div class="hud-actions">
+        <a class="btn-hud" href="../assets/CV_Dhanoush_Kessavane.pdf" download>⬇ CV.PDF</a>
+        <a class="btn-hud" href="https://github.com/dkessavane" target="_blank" rel="noopener">GITHUB ↗</a>
+        <a class="btn-hud" href="https://www.linkedin.com/in/dhanoush-kessavane/" target="_blank" rel="noopener">LINKEDIN ↗</a>
       </div>
-    </section>
+      <p class="contact-note">latence constatée : &lt; 24 h · réponse garantie à toute proposition sérieuse</p>
+      <p class="signature">D. Kessavane</p>
+    </div>
+  </div>
+</template>
 
-    <!-- ===== CELLULE MARKDOWN FINALE ===== -->
-    <section class="cell cell-md">
-      <div class="gutter"></div>
-      <div class="md md-final">
-        <p>
-          <em>Notebook écrit à la main, cellule par cellule — aucun modèle génératif n'a été sollicité
-          (conflit d'intérêts).</em> Voir aussi la <a href="../index.html">version cyber</a> de ce
-          portfolio, présentée sous forme de rapport d'audit.
-        </p>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <p>kernel DK-1 : idle · 8 cellules exécutées dans l'ordre, sans redémarrage · 1 exception en attente de correctif (In [3]) · <span id="year"></span></p>
-  </footer>
-
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
