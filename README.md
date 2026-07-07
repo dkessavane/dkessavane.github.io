@@ -7,11 +7,13 @@ décliné en **deux versions au contenu identique** :
   est… moi. Constat critique DK-001 : aucune alternance détectée à partir de
   septembre 2026 — remédiation en §7. Thème « papier » par défaut, mode nuit
   disponible, imprimable comme un vrai rapport (`Ctrl+P`).
-- **Version IA** (`ia/index.html`) — fausse **fiche de modèle** (model card) du modèle
-  « DK-1 » : playground avec réponse générée token par token, ISSUE #001 (limitation
-  connue : aucun déploiement après sept. 2026), fine-tuning (expérience), évaluations
-  (projets), quickstart de recrutement en Python. Thème sombre par défaut,
-  dégradés cyan/violet assumés.
+- **Version IA** (`ia/index.html`) — faux **notebook Jupyter**
+  (`dhanoush_kessavane.ipynb`) qui charge et évalue le modèle « DK-1 » : cellules
+  `In [n]` / `Out[n]` qui s'exécutent au scroll (kernel `busy` → `idle`), barre
+  tqdm, tables pandas, exception `AlternanceNotFoundError` levée en cellule 3
+  (aucune alternance après sept. 2026 — correctif en cellule 8), logs
+  d'entraînement pour l'expérience, widgets ipywidgets pour filtrer les projets.
+  Thème JupyterLab sombre par défaut, thème notebook clair disponible.
 
 Les deux versions sont reliées entre elles par un lien croisé.
 
@@ -23,9 +25,9 @@ portfolio/
 ├── css/style.css       # Styles version cyber (thèmes papier/nuit)
 ├── js/main.js          # Thème, menu mobile, animations, filtres projets
 ├── ia/
-│   ├── index.html      # Version IA — model card DK-1
-│   ├── css/style.css   # Styles version IA (thèmes dark/light)
-│   └── js/main.js      # Idem + effet de génération token par token
+│   ├── index.html      # Version IA — notebook dhanoush_kessavane.ipynb
+│   ├── css/style.css   # Styles version IA (thèmes JupyterLab dark/light)
+│   └── js/main.js      # Idem + exécution des cellules au scroll, kernel, tqdm
 ├── assets/             # → déposer CV_Dhanoush_Kessavane.pdf ici
 └── projet/             # Archives des projets BUT1/BUT2/BUT3 (non publiées)
 ```

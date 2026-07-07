@@ -1,6 +1,8 @@
-/* DK-1 — Portfolio « model card » de Dhanoush Kessavane (version IA) */
+/* dhanoush_kessavane.ipynb — Portfolio « notebook Jupyter » de Dhanoush Kessavane */
 (function () {
   "use strict";
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ===== Thème (sombre par défaut, clé distincte de la version cyber) ===== */
   const root = document.documentElement;
@@ -17,7 +19,7 @@
     localStorage.setItem("theme-ia", next);
   });
 
-  /* ===== Menu mobile ===== */
+  /* ===== Sommaire mobile ===== */
   const burger = document.getElementById("burger");
   const navLinks = document.getElementById("navLinks");
 
@@ -32,8 +34,8 @@
     })
   );
 
-  /* ===== Lien actif dans la nav ===== */
-  const sections = document.querySelectorAll("section[id]");
+  /* ===== Lien actif dans le sommaire ===== */
+  const sections = document.querySelectorAll(".cell[id]");
   const linkMap = new Map(
     [...navLinks.querySelectorAll("a[href^='#']")].map((a) => [a.getAttribute("href").slice(1), a])
   );
@@ -48,13 +50,13 @@
         }
       });
     },
-    { rootMargin: "-40% 0px -55% 0px" }
+    { rootMargin: "-30% 0px -55% 0px" }
   );
   sections.forEach((s) => sectionObserver.observe(s));
 
-  /* ===== Filtres des évaluations ===== */
+  /* ===== Filtres des projets (widget ToggleButtons) ===== */
   const filterBar = document.getElementById("filterBar");
-  const cards = document.querySelectorAll(".eval");
+  const cards = document.querySelectorAll(".proj");
 
   filterBar.addEventListener("click", (e) => {
     const btn = e.target.closest(".filter-btn");
@@ -68,33 +70,82 @@
     });
   });
 
-  /* ===== Effet de génération token par token (hero) ===== */
-  const typedEl = document.getElementById("typedReply");
-  const cursorEl = document.getElementById("cursor");
-  const REPLY =
-    "Excellente requête. D'après mes données : Dhanoush Kessavane, étudiant ingénieur " +
-    "Cybersécurité & IA à l'ECE Paris, est disponible dès septembre 2026. " +
-    "Confiance du modèle : 99,9 %. Voulez-vous que je rédige l'e-mail ? 📩";
-
-  if (typedEl) {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
-      typedEl.textContent = REPLY;
-      if (cursorEl) cursorEl.remove();
-    } else {
-      let i = 0;
-      const tick = () => {
-        if (i >= REPLY.length) {
-          setTimeout(() => cursorEl && cursorEl.remove(), 2200);
-          return;
-        }
-        // avance de 1 à 3 caractères, comme un flux de tokens
-        i = Math.min(REPLY.length, i + 1 + Math.floor(Math.random() * 3));
-        typedEl.textContent = REPLY.slice(0, i);
-        setTimeout(tick, 26 + Math.random() * 60);
-      };
-      setTimeout(tick, 700);
+  /* ===== Indicateur de kernel ===== */
+  const kernelDot = document.getElementById("kernelDot");
+  const kernelState = document.getElementById("kernelState");
+  let busyCount = 0;
+  function kernelBusy() {
+    busyCount++;
+    kernelDot.classList.add("busy");
+    kernelState.textContent = "busy";
+  }
+  function kernelIdle() {
+    busyCount = Math.max(0, busyCount - 1);
+    if (busyCount === 0) {
+      kernelDot.classList.remove("busy");
+      kernelState.textContent = "idle";
     }
+  }
+
+  /* ===== Exécution des cellules au scroll : In [*] → In [n] ===== */
+  const codeCells = document.querySelectorAll(".cell-code");
+  const tqdmFill = document.getElementById("tqdmFill");
+
+  function animateLoadCell(cell, done) {
+    const lines = cell.querySelectorAll(".load-line");
+    cell.classList.add("loading");
+    if (tqdmFill) tqdmFill.style.width = "0";
+    let i = 0;
+    const next = () => {
+      if (i >= lines.length) {
+        cell.classList.remove("loading");
+        done();
+        return;
+      }
+      const line = lines[i++];
+      line.classList.add("show");
+      // la ligne tqdm se remplit avant de passer à la suite
+      if (line.querySelector(".tqdm-fill")) {
+        requestAnimationFrame(() => { tqdmFill.style.width = "100%"; });
+        setTimeout(next, 1500);
+      } else {
+        setTimeout(next, 170);
+      }
+    };
+    next();
+  }
+
+  function runCell(cell) {
+    const counts = cell.querySelectorAll(".exec-count");
+    const n = cell.dataset.exec;
+    kernelBusy();
+    counts.forEach((c) => (c.textContent = "*"));
+    setTimeout(() => {
+      counts.forEach((c) => (c.textContent = n));
+      cell.classList.remove("pending");
+      cell.classList.add("ran");
+      if (cell.id === "load") {
+        animateLoadCell(cell, kernelIdle);
+      } else {
+        kernelIdle();
+      }
+    }, 320 + Math.random() * 380);
+  }
+
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    codeCells.forEach((c) => c.classList.add("pending"));
+    if (tqdmFill) tqdmFill.style.width = "0";
+    const runObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          runObserver.unobserve(e.target);
+          runCell(e.target);
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
+    );
+    codeCells.forEach((c) => runObserver.observe(c));
   }
 
   /* ===== Dates ===== */
